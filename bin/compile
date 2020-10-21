@@ -29,7 +29,7 @@ echo "Copied ${PROCFILE} as Procfile successfully" | indent
 if [ "${CACHE_BUILD_HISTORY}" == "true" ]; then
   if test -d ${CACHE_DIR}/build_history; then
     echo "Restoring build history from cache" | indent
-    cp ${CACHE_DIR}/build_history ${BUILD_DIR}/build_history
+    cp -r ${CACHE_DIR}/build_history ${BUILD_DIR}/build_history
   else
     echo "Creating build history cache directory" | indent
     mkdir -p ${CACHE_DIR}/build_history
@@ -48,5 +48,5 @@ if [ "${CACHE_BUILD_HISTORY}" == "true" ]; then
   done
 
   echo "Caching ${BUILD_ROOT} as build history 0"
-  cp ${BUILD_DIR}${BUILD_ROOT} ${CACHE_DIR}/build_history/0
+  cp -r ${BUILD_DIR}${BUILD_ROOT} ${CACHE_DIR}/build_history/0
 fi
