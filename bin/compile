@@ -42,8 +42,8 @@ if [ "${CACHE_BUILD_HISTORY}" == "true" ]; then
 
   for i in {1..0}; do
     if test -d ${CACHE_DIR}/build_history/${i}; then
-      echo "Incrementing cached build history ${i} to $(${i} + 1)" | indent
-      mv ${CACHE_DIR}/build_history/${i} ${CACHE_DIR}/build_history/$(${i} + 1)
+      echo "Incrementing cached build history ${i} to $((${i} + 1))" | indent
+      mv ${CACHE_DIR}/build_history/${i} ${CACHE_DIR}/build_history/$((${i} + 1))
     fi
   done
 
