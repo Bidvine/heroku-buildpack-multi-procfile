@@ -9,6 +9,8 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 PROCFILE=$(cat ${ENV_DIR}/PROCFILE)
+CACHE_BUILD_HISTORY=$(cat ${ENV_DIR}/CACHE_BUILD_HISTORY)
+BUILD_ROOT=$(cat ${ENV_DIR}/BUILD_ROOT)
 
 if [[ -z "${PROCFILE}" ]]; then
     echo "PROCFILE was not set. Aborting" | indent
