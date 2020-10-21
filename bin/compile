@@ -23,3 +23,29 @@ if ! [ $? ]; then
 fi
 
 echo "Copied ${PROCFILE} as Procfile successfully" | indent
+
+if [ "${CACHE_BUILD_HISTORY}" == "true" ]; then
+  if test -d ${CACHE_DIR}/build_history; then
+    echo "Restoring build history from cache" | indent
+    cp ${CACHE_DIR}/build_history ${BUILD_DIR}/build_history
+  else
+    echo "Creating build history cache directory" | indent
+    mkdir -p ${CACHE_DIR}/build_history
+  fi
+
+  if test -d ${CACHE_DIR}/build_history/2; then
+    echo "Removing build history 2 from cache" | indent
+    rm -rf ${CACHE_DIR}/build_history/2
+  fi
+
+  for i in {1..0}; do
+    if test -d ${CACHE_DIR}/build_history/${i}; then
+        echo "Incrementing cached build history ${i} to ${i + 1}" | indent
+        mv ${CACHE_DIR}/build_history/${i} ${CACHE_DIR}/build_history/${i + 1}
+      fi
+    fi
+  done
+
+  echo "Caching ${BUILD_ROOT} as build history 0"
+  cp ${BUILD_DIR}${BUILD_ROOT} ${CACHE_DIR}/build_history/0
+fi
