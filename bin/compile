@@ -48,5 +48,6 @@ if [ "${CACHE_BUILD_HISTORY}" == "true" ]; then
   done
 
   echo "Caching ${BUILD_ROOT} as build history 0"
-  cp -r ${BUILD_DIR}${BUILD_ROOT} ${CACHE_DIR}/build_history/0
+  mkdir -p ${CACHE_DIR}/build_history/0
+  cp -r ${BUILD_DIR}${BUILD_ROOT}/static ${CACHE_DIR}/build_history/0/static
 fi
