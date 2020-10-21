@@ -1,8 +1,12 @@
+# Bidvine's fork of Heroku Multi Procfile buildpack
+
+Our changes: Set environment variable CACHE_BUILD_HISTORY=true to store a few copies of prior builds in the Heroku cache and restore them on new builds so that your app can serve legacy resources.
+
 # Heroku Multi Procfile buildpack
 
 Imagine you have a single code base, which has a few different applications within it... or at least the ability to run a few different applications. Or, maybe you're Google with your mono repo?
 
-In any case, how do you manage this on Heroku? You don't. Heroku applications assume one repo to one application. 
+In any case, how do you manage this on Heroku? You don't. Heroku applications assume one repo to one application.
 
 Enter the Multi Procfile buildpack, where every app gets a Procfile!
 
