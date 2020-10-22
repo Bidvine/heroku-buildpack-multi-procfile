@@ -35,12 +35,12 @@ if [ "${CACHE_BUILD_HISTORY}" == "true" ]; then
     mkdir -p ${CACHE_DIR}/build_history
   fi
 
-  if test -d ${CACHE_DIR}/build_history/2; then
-    echo "Removing build history 2 from cache" | indent
-    rm -rf ${CACHE_DIR}/build_history/2
+  if test -d ${CACHE_DIR}/build_history/1; then
+    echo "Removing build history 1 from cache" | indent
+    rm -rf ${CACHE_DIR}/build_history/1
   fi
 
-  for i in {1..0}; do
+  for i in {0..0}; do
     if test -d ${CACHE_DIR}/build_history/${i}; then
       echo "Incrementing cached build history ${i} to $((${i} + 1))" | indent
       mv ${CACHE_DIR}/build_history/${i} ${CACHE_DIR}/build_history/$((${i} + 1))
