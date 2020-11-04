@@ -48,6 +48,7 @@ if [ "${CACHE_BUILD_HISTORY}" == "true" ]; then
   done
 
   echo "Caching ${BUILD_ROOT} as build history 0" | indent
-  mkdir -p ${CACHE_DIR}/build_history/0
-  cp -r ${BUILD_DIR}${BUILD_ROOT}/static ${CACHE_DIR}/build_history/0/static
+  mkdir -p ${CACHE_DIR}/build_history/0/static
+  cp -r ${BUILD_DIR}${BUILD_ROOT}/static/js ${CACHE_DIR}/build_history/0/static/js
+  cp -r ${BUILD_DIR}${BUILD_ROOT}/static/css ${CACHE_DIR}/build_history/0/static/css
 fi
